@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Mensajes de Código de Acceso</title>
+    <style>
+        .oculto {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<h1>Mensajes de Código de Acceso</h1>
+
+    <div id="contenedor-mensajes">
+        <p id="mensaje1"></p>
+        <p id="mensaje2"></p>
+        <p id="mensaje3"></p>
+        <p id="mensaje4"></p>
+    </div>
+
+    <input type="text" id="codigo-acceso" placeholder="Ingresa el código de acceso">
+    <button onclick="mostrarMensaje()">Mostrar Mensaje</button>
+
+    <script>
+        const mensajes = {
+            '1234': 'Mensaje 1',
+            '5678': 'Mensaje 2',
+            '9012': 'Mensaje 3',
+            '3456': 'Mensaje 4'
+        };
+
+        function mostrarMensaje() {
+            const codigoAcceso = document.getElementById('codigo-acceso').value;
+            const contenedorMensajes = document.getElementById('contenedor-mensajes');
+
+            for (let codigo in mensajes) {
+                const mensajeElemento = document.getElementById(`mensaje${codigo}`);
+                mensajeElemento.textContent = '';
+                mensajeElemento.classList.add('oculto');
+
+                if (codigo === codigoAcceso) {
+                    mensajeElemento.textContent = mensajes[codigo];
+                    mensajeElemento.classList.remove('oculto');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
